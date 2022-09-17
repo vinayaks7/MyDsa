@@ -17,10 +17,8 @@ public:
         {
             return;
         }
-        
-        fUtils(root->left, umap, max_freq);
-        
         umap[root->val]++;
+        fUtils(root->left, umap, max_freq);
         max_freq = max(max_freq, umap[root->val]);//maintain the max. frequency out of all
         
          fUtils(root->right, umap, max_freq);
