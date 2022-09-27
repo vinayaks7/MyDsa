@@ -10,19 +10,31 @@
  */
 class Solution {
 public:
-
+    void solve(ListNode* head){
+        
+        
+        ListNode* curr = head;
+        ListNode* fur = head->next;
+        while(curr!=NULL and fur!=NULL){
+           if(curr->val == fur->val) 
+           {
+               curr->next=fur->next;
+               fur=fur->next;
+           }
+            else
+            {
+                
+                curr=fur;
+                fur=fur->next;
+            }
+        }
+        
+    }
     
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode* ptr=head;
-    ListNode* temp=new ListNode(-1);
-    temp->next=ptr;
-    while(ptr!=NULL && ptr->next!=NULL){
-        if(ptr->val==ptr->next->val){
-            ptr->next=ptr->next->next;
-        }
-        else ptr=ptr->next;
-    }
-    return temp->next;
+        if(head==NULL)return NULL;
+        solve(head);
+        return head;
         
     }
 };
